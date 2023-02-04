@@ -4,7 +4,8 @@ export const initialState = {
     loading: false,
     products: [],
     isError: false,
-    error: ""
+    error: "",
+    cart: []
 }
 
 
@@ -33,6 +34,11 @@ export const productReducer = (state, action) => {
                 products: [],
                 isError: true,
                 error: action.payload
+            }
+        case productActionTypes.ADD_TO_CART:
+            return {
+                ...state,
+                cart: [...state.cart, action.payload]
             }
         default:
             return state;
